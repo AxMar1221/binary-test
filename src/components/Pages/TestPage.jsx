@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Typography, TextField, Button } from "@mui/material";
+import { frases } from "../../frases";
 
 export const TestPage = () => {
   const nameUp = localStorage.getItem("nameUp");
@@ -7,6 +8,26 @@ export const TestPage = () => {
   const [textResult, setTextResult] = useState("");
   const [binaryCodeNumber, setBinaryCodeNumber] = useState("");
   const [numberResult, setNumberResult] = useState("");
+  const [randomPhrase, setRandomPhrase] = useState("");
+  const [isTextButtonDisabled, setIsTextButtonDisabled] = useState(false);
+  const [isNumberButtonDisabled, setIsNumberButtonDisabled] = useState(false);
+  const [isPageReloaded, setIsPageReloaded] = useState(false);
+
+  useEffect(() => {
+    getRandomPhrase();
+  }, []);
+
+    useEffect(() => {
+    // Verificar si la página ha sido recargada
+    if (window.performance && window.performance.navigation.type === 1) {
+      setIsPageReloaded(true);
+    }
+  }, []);
+
+  const getRandomPhrase = () => {
+    const randomIndex = Math.floor(Math.random() * frases.length);
+    setRandomPhrase(frases[randomIndex]);
+  };
 
   const handleBinaryTextChange = (event) => {
     const sanitizedInput = event.target.value.replace(/[^01\s]/g, "");
@@ -27,6 +48,7 @@ export const TestPage = () => {
       })
       .join("");
     setTextResult(textResult);
+    setIsTextButtonDisabled(true);
   };
 
   const convertBinaryToNumber = () => {
@@ -35,13 +57,22 @@ export const TestPage = () => {
       .map((binaryChunk) => parseInt(binaryChunk, 2))
       .join("");
     setNumberResult(numberResult);
+    setIsNumberButtonDisabled(true);
   };
 
   return (
     <>
       <Container maxWidth="sm">
+        {isPageReloaded && (
+          <Typography variant="subtitle1" color="secondary" gutterBottom>
+            La página ha sido recargada.
+          </Typography>
+        )}
         <Typography variant="h4" align="center" color="primary" gutterBottom>
           ¡Hola, {nameUp}!
+        </Typography>
+        <Typography variant="h5" align="center" color="error" gutterBottom>
+          {randomPhrase}
         </Typography>
         <TextField
           multiline
@@ -54,7 +85,12 @@ export const TestPage = () => {
           onCopy={(e) => e.preventDefault()}
           style={{ marginBottom: 16 }}
         />
-        <Button variant="contained" onClick={convertBinaryToText}>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={convertBinaryToText}
+          disabled={isTextButtonDisabled}
+        >
           Convertir
         </Button>
         <Typography variant="body1" gutterBottom>
@@ -71,7 +107,12 @@ export const TestPage = () => {
           onCopy={(e) => e.preventDefault()}
           style={{ margin: "16px 0" }}
         />
-        <Button variant="contained" onClick={convertBinaryToNumber}>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={convertBinaryToNumber}
+          disabled={isNumberButtonDisabled}
+        >
           Convertir
         </Button>
         <Typography variant="body1" gutterBottom>

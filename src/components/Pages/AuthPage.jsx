@@ -14,12 +14,13 @@ export const AuthPage = () => {
   const nameUp = name.charAt(0).toUpperCase() + name.slice(1);
   
   const onLogin = () => {
-    localStorage.setItem("nameUp", nameUp)
-    if (emails.includes(email)) {
-      navigate("/test", {
-        replace: true,
-      });
-
+    const validatedEmail = localStorage.getItem("validatedEmail");
+    if (validatedEmail) {
+      setError("Este correo electrónico ya ha sido validado.");
+    } else if (emails.includes(email)) {
+      localStorage.setItem("validatedEmail", email);
+      localStorage.setItem("nameUp", nameUp);
+      setTest(true);
     } else {
       setError("Correo electrónico no válido");
     }
@@ -36,8 +37,8 @@ export const AuthPage = () => {
   return (
     <Container maxWidth="sm">
       {test ? (
-        <TestPage /> 
-        ) : (
+        <TestPage />
+      ) : (
         <>
           <Typography variant="h4" align="center" gutterBottom>
             Valida tu email
