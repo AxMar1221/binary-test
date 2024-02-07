@@ -4,11 +4,11 @@ import { frases } from "../../frases";
 
 export const TestPage = () => {
   const nameUp = localStorage.getItem("nameUp");
-  const [binaryCodeText, setBinaryCodeText] = useState("");
-  const [textResult, setTextResult] = useState("");
-  const [binaryCodeNumber, setBinaryCodeNumber] = useState("");
-  const [numberResult, setNumberResult] = useState("");
   const [randomPhrase, setRandomPhrase] = useState("");
+  const [binaryCodeText, setBinaryCodeText] = useState("");
+  const [binaryCodeNumber, setBinaryCodeNumber] = useState("");
+  const [textResult, setTextResult] = useState("");
+  const [numberResult, setNumberResult] = useState("");
   const [isTextButtonDisabled, setIsTextButtonDisabled] = useState(false);
   const [isNumberButtonDisabled, setIsNumberButtonDisabled] = useState(false);
   const [isPageReloaded, setIsPageReloaded] = useState(false);
