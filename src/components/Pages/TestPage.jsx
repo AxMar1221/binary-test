@@ -97,6 +97,9 @@ export const TestPage = () => {
         <Typography variant="body1" gutterBottom>
           Resultado: {textResult}
         </Typography>
+        <Typography variant="h6" align="center" color="error" gutterBottom>
+          Escribe tu fecha de nacimiento
+        </Typography>
         <TextField
           multiline
           label="Código binario para números"
