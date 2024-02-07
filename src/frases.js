@@ -13,7 +13,7 @@ export const frases = [
      "El lenguaje binario es una danza.",
      "Bits y letras entrelazados sutilmente.",
      "Cifra tus pensamientos en binario.",
-     "La magia oculta detrás del 0101.",
+     "La magia oculta detrás del cero y uno.",
      "El binario susurra letras a las máquinas.",
      "La esencia de las letras es binaria.",
      "Código binario, alfabeto digital.",
