@@ -144,4 +144,5 @@ export const emails = [
   "valentina.pacheco@upaep.mx",
   "ximena.garcia@upaep.mx",
   "yurizarahi.deanda@upaep.mx",
+  "romanstefano.fortuny@upaep.mx"
 ];
