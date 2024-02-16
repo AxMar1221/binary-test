@@ -108,8 +108,8 @@ export const TestPage = () => {
           value={binaryCodeNumber}
           onChange={handleBinaryNumberChange}
           inputProps={{ style: { maxHeight: "150px", overflowY: "auto" } }}
-          onPaste={(e) => e.preventDefault()}
-          onCopy={(e) => e.preventDefault()}
+          // onPaste={(e) => e.preventDefault()}
+          // onCopy={(e) => e.preventDefault()}
           style={{ margin: "16px 0" }}
         />
         <Button
