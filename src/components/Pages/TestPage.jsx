@@ -82,8 +82,8 @@ export const TestPage = () => {
           value={binaryCodeText}
           onChange={handleBinaryTextChange}
           inputProps={{ style: { maxHeight: "250px", overflowY: "auto" } }}
-          // onPaste={(e) => e.preventDefault()}
-          // onCopy={(e) => e.preventDefault()}
+          onPaste={(e) => e.preventDefault()}
+          onCopy={(e) => e.preventDefault()}
           style={{ marginBottom: 16 }}
         />
         <Button
